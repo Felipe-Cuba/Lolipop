@@ -1,0 +1,514 @@
+/* Importando fontes */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+/*Nav css começa aqui*/
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+}
+
+body{
+  overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+header{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cont{
+  width: 100%;
+  max-width: 117rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.cont-p{
+  width: 100%;
+  max-width: 117rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  background: #191919;
+}
+
+.menu-icons{
+  color: #eee;
+  font-size: 4rem;
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1500;
+  display: none;
+}
+
+
+nav{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 8rem;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.logo{
+  width: 5rem;
+  height: 5rem;
+  background: #eb3007;
+  display: flex;
+  border-radius: 100%;
+  margin-right: 5rem;
+}
+
+.logo i{
+margin: auto;
+font-size: 3rem;
+color: white;
+}
+
+.nav-list{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.nav-list li{
+  line-height: 8rem;
+
+}
+
+.sub-menu li{
+  line-height: 4rem;
+}
+
+.nav-list a{
+  display: block;
+  color: #eee;
+  padding: 0 1.5rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  transition: color 100ms;
+  text-decoration: none;
+}
+
+.nav-list a:hover{
+  color: #eb3007;
+}
+
+.pesquisa{
+  color: white;
+  padding: 1.3rem;
+  display: inline-block;
+  background: none;
+  border: 2px solid #eb3007;
+  outline: none;
+  border-radius: 5rem;
+  font-family: roboto;
+  width: 200px;
+}
+
+::-webkit-input-placeholder{
+  color: white;
+  font-family: roboto;
+}
+
+
+.sub-menu{
+  width: 20rem;
+  display: block;
+  position: absolute;
+  border-top: 3px solid #eb3007;
+  background:#191919;
+  z-index: 100;
+  top: 16rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 10ms ease;
+}
+
+.sub-menu::before{
+  content: "";
+  position: absolute;
+  top: -2.5rem;
+  left: 3rem;
+  border: 1.2rem solid transparent;
+  border-bottom-color: #eb3007;
+}
+
+.sub-menu .sub-menu::before{
+  top: .9rem;
+  left: -2.5rem;
+  border: 1.2rem solid transparent;
+  border-right-color: #eb3007;
+}
+
+.sub-menu .sub-menu{
+  border: none;
+  border-left: 3px solid #eb3007;
+  top: 0;
+  left: 160%;
+}
+
+.nav-list li:hover > .sub-menu{
+  top: 6rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.sub-menu li:hover > .sub-menu{
+  top: 0;
+  left: 100%;
+}
+
+li.move-right{
+  margin: auto 0 auto auto;
+  line-height: initial;
+}
+
+@media screen and (max-width: 750px){
+  .nav-list{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    flex-direction: column;
+    align-items: initial;
+    background: #191919;
+    z-index: 1000;
+    display: none;
+    overflow-y: scroll;
+  }
+
+  .nav-list > li{
+    line-height: 6rem;
+  }
+
+  .sub-menu{
+    position: initial;
+    border: 3px solid transparent;
+    border-left-color: #eb3007;
+    margin-left: 1rem;
+    max-height: 0;
+  }
+
+  .sub-menu::before{
+    display: none;
+  }
+
+  .nav-list li:hover .sub-menu{
+    opacity: 1;
+    visibility: visible;
+    max-height: initial;
+  }
+
+  li.move-right{
+    margin: 0 auto 0 0;
+    line-height: initial;
+  }
+
+  .menu-icons{
+    display: block;
+  }
+
+
+
+  .ion-md-close{
+    display: none;
+  }
+
+  nav.active .ion-md-close{
+    display: block;
+  }
+
+  nav.active .ion-md-menu{
+    display: none;
+  }
+
+  nav.active .nav-list{
+    display: flex;
+  }
+
+  .receita{
+    width: 90%;
+  }
+
+}
+/*Fim nav css*/
+
+/*Hero*/
+.hero{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8),rgba(0,0,0,0.8)),
+    url("../images/bg.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.hero-p{
+  width: 100%;
+  height: 100vh;
+}
+
+
+.text{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #eee;
+    text-align: center;
+}
+
+.text h1{
+    font-size: 8rem;
+    margin: 2rem 0;
+    font-family: 'indie Flower', sans-serif;
+}
+
+.text h2{
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.text p{
+    font-size: 1.6rem;
+    margin-bottom: 5rem;
+}
+
+.text .btn{
+    font-size: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    color: #eee;
+    text-transform: uppercase;
+    border: 2px solid #eb3007;
+    background: #eb3007;
+    border-radius: 5rem;
+    transition: 300ms;
+}
+
+.text .btn:hover{
+  background: none;
+}
+.pub{
+  width: 80%;
+  height: 70%;
+  background: #fff;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+  padding: 10px 20px;
+}
+
+
+@media screen and (max-width: 830px){
+    .text h1{
+        font-size: 4rem;
+    }
+
+    .text .btn{
+        font-size: 1.2rem;
+    }
+}
+
+/* Icones redes sociais para contato */
+
+.s-m{
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.s-m a{
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  background: none;
+  color: #fff;
+  margin: 0 6px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  font-size: 18px;
+}
+.s-m a:hover{
+  background: none;
+}
+
+.s-m a i{
+  transition: 0.4s all;
+}
+
+.s-m a:hover > i{
+  color: #eb3007;
+  transform: scale(1.6) rotate(25deg);
+}
+
+
+.scroll{
+  background: rgba(0,0,0,0.6);
+  max-height: 50%;
+  min-width: 40%;
+  overflow: scroll;
+  overflow-x:hidden;
+  position: absolute;
+  top:40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sc{
+  overflow: scroll;
+  overflow-x: hidden;
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%);
+  min-width: 40%;
+  height: 200px;
+  margin-top: 20px;
+}
+
+.content-table{
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 100%;
+  border-radius: 5px 5px 0 0;
+  overflow: scroll;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+
+}
+
+.content-table thead tr{
+  background: #eb3007;
+  color: #fff;
+  text-align: left;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.content-table th,
+.content-table td{
+  padding: 12px 15px
+}
+
+.content-table tbody tr{
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr{
+  background: #f3f3f3;
+}
+
+.content-table tbody tr td{
+  font-size: 14px;
+}
+
+.content-table tbody tr:last-of-type{
+  border-bottom: 2px solid #eb3007;
+}
+
+.content-table tbody tr td a{
+  color: black;
+  font-size: 14px;
+  transition: 400ms;
+  text-decoration: none;
+}
+
+.content-table tbody tr td a:hover{
+  color: #eb3007;
+  font-weight: bold;
+}
+
+.content-table tbody tr td .edit,
+.content-table tbody tr td .delete{
+  color: black;
+  transition: 400ms;
+}
+
+.content-table tbody tr td .edit:hover{
+  color: blue;
+}
+
+.content-table tbody tr td .delete:hover{
+  color: red;
+}
+
+
+.receita{
+  padding: 10px 20px;
+  background: white;
+  min-width: 50%;
+  height: 70%;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.receita .top h1{
+  font-family: 'roboto', sans-serif;
+  font-size: 20pt;
+  color:#fc6e00;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.receita .top h2{
+  font-family: 'roboto', sans-serif;
+  font-size: 10pt;
+  font-style: italic;
+  color: #9c9c9c;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.receita .ingrediente p{
+  font-size: 12pt;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.receita .bot h3{
+  font-size: 14pt;
+  color: #fc6e00;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.receita .bot p{
+  color: black;
+  text-align: justify;
+  font-size: 12pt;
+  margin-top: 5px;
+}
