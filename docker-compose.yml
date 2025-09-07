@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # PHP/Apache Web Server
+  web:
+    build: .
+    container_name: lolipop_web
+    ports:
+      - '8080:80'
+    volumes:
+      - .:/var/www/html
+      - ./uploads:/var/www/html/uploads
+    environment:
+      - DB_HOST=db
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    depends_on:
+      - db
+    networks:
+      - lolipop_network
+
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: lolipop_db
+    restart: unless-stopped
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./Banco de dados/lolipop.sql:/docker-entrypoint-initdb.d/lolipop.sql
+    networks:
+      - lolipop_network
+
+  # phpMyAdmin (optional, for database management)
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    container_name: lolipop_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - '8081:80'
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - db
+    networks:
+      - lolipop_network
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  lolipop_network:
+    driver: bridge
